@@ -1,0 +1,42 @@
+<div class="main">
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Einzeln</mat-card-title>
+            <mat-card-subtitle>AI</mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="card-content" #content>
+            <div id="chatContent" class="content-{{chat.position}}" style="display: flex;"
+                *ngFor="let chat of chatList">
+                <div *ngIf="chat.position==='left';then left else right"></div>
+                <ng-template #left>
+                    <div class="contact example-header-image"></div>
+                    <p class="{{chat.position}}">
+                        {{chat.content}}
+                    </p>
+                </ng-template>
+                <ng-template #right>
+                    <p class="{{chat.position}}">
+                        {{chat.content}}
+                    </p>
+                    <div class="contact example-header-image"></div>
+                </ng-template>
+            </div>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions class="card-actions">
+            <div style="width: 90%;">
+                <mat-form-field appearance="outline" style="margin-top: 20px; width: 100%;">
+                    <textarea [(ngModel)]="chatTxt" matInput></textarea>
+                </mat-form-field>
+            </div>
+            <div style="width: 10%;display: flex; justify-content: center; min-width: 110px;">
+                <button mat-raised-button color="primary" (click)="submit()">Chat</button>
+            </div>
+
+
+        </mat-card-actions>
+    </mat-card>
+</div>
