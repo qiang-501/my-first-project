@@ -22,5 +22,32 @@ export class Demo1Component implements OnInit {
   // i need set items sort by name, the same first letter display as a>A , meams it should display as aad,afd,and, Abd,Acd,And,Avd ...
   ngOnInit(): void {
     //set sort here
+    this.items.sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+      let index = 0;
+      while (index < nameA.length && index < nameB.length) {
+        const charA = nameA.charAt(index);
+        const charB = nameB.charAt(index);
+
+        if (charA < charB) {
+          return -1;
+        }
+        if (charA > charB) {
+          return 1;
+        }
+        if (charA == charB) {
+          if (a.name.charAt(index) > b.name.charAt(index)) {
+            return -1;
+          }
+          if (a.name.charAt(index) < b.name.charAt(index)) {
+            return 1;
+          }
+        }
+        index++;
+      }
+
+      return 0;
+    });
   }
 }
