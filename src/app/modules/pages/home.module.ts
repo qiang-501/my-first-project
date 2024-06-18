@@ -7,12 +7,14 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Demo1Component } from './demo1/demo1.component.js';
 @NgModule({
-  declarations: [MainComponent],
-  exports: [NgChartsModule, MatCardModule, MainComponent],
+  declarations: [MainComponent, Demo1Component],
+  exports: [NgChartsModule, MatCardModule, MainComponent, Demo1Component],
   imports: [
     HomeRoutingModule,
     NgChartsModule,
@@ -23,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     CommonModule,
     FormsModule,
+    MatSelectModule,
   ],
 })
 export class HomeModule {}

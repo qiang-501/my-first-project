@@ -1,0 +1,8 @@
+<div class="demo-main">
+    <mat-select>
+        <div>
+            <mat-option style="font-size: 14px;" title="{{item.name}}" *ngFor="let item of items"
+                [value]="item.value">{{item.name}}</mat-option>
+        </div>
+    </mat-select>
+</div>
