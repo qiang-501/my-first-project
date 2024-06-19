@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+gitimport { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 interface ChatModel {
   content?: string;
