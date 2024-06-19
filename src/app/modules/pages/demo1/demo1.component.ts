@@ -12,7 +12,7 @@ export class Demo1Component implements OnInit {
         data: [],
       },
     ],
-    labels: [1000, 5000, 10000, 15000, 20000, 25000],
+    labels: [],
   };
   public ChartOptions: any = {
     scales: {
@@ -31,6 +31,9 @@ export class Demo1Component implements OnInit {
   ];
   // i need set items sort by name, the same first letter display as a>A , meams it should display as aad,afd,and, Abd,Acd,And,Avd ...
   ngOnInit(): void {
+    for (let i = 1; i <= 100; i++) {
+      this.ChartData.labels.push(i * 1000)
+    }
     for (let i = 0; i < this.ChartData.labels.length; i++) {
       this.items = [];
       for (let m = 0; m < this.ChartData.labels[i] / 2; m++) {
