@@ -9,10 +9,10 @@ export class Demo1Component implements OnInit {
   public ChartData: any = {
     datasets: [
       {
-        data: [10, 20, 30, 60, 90, 180],
+        data: [],
       },
     ],
-    labels: ['a', 'b', 'c', 'd', 'e', 'f'],
+    labels: [],
   };
   public ChartOptions: any = {
     scales: {
@@ -23,23 +23,21 @@ export class Demo1Component implements OnInit {
   };
   // i need set items sort by name, the same first letter display as a>A , meams it should display as aad,afd,and, Abd,Acd,And,Avd ...
   ngOnInit(): void {
-    for (let i = 0; i < 3300; i++) {
+    const N: number = 10000; // max iteration allowed
+    for (let i = 0; i < N; i++) {
       this.items.push({ name: this.makeName(5), value: Math.random() });
     }
 
-    //set sort here: bubble sort
-    // for (let i = 0; i < this.items.length; i++) {
-    //   for (let j = i + 1; j < this.items.length; j++) {
-    //     if (this.compareTo(this.items[i].name, this.items[j].name) < 0) {
-    //       this.swap(this.items, i, j);
-    //     }
-    //   }
-    // }
-    let beginDate = Date.now();
-    this.bubbleSort(this.items);
-    let endDate = Date.now();
-    //spend time on sort
-    console.log(endDate - beginDate);
+    let n = 0;
+    while (n <= N) {
+      this.ChartData.labels.push(n);
+      var beginDate = Date.now();
+      this.bubbleSort(this.items.slice(0, n));
+      var endDate = Date.now();
+      //spend time on sort
+      this.ChartData.datasets[0].data.push(Math.log10(endDate - beginDate));
+      n += 500;
+    }
   }
 
   bubbleSort(arr: { name: string; value: number }[]): void {
