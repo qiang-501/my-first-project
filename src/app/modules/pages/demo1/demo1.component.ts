@@ -23,7 +23,7 @@ export class Demo1Component implements OnInit {
   };
   // i need set items sort by name, the same first letter display as a>A , meams it should display as aad,afd,and, Abd,Acd,And,Avd ...
   ngOnInit(): void {
-    const N: number = 10000; // max iteration allowed
+    const N: number = 200000; // max iteration allowed
     for (let i = 0; i < N; i++) {
       this.items.push({ name: this.makeName(5), value: Math.random() });
     }
@@ -32,11 +32,12 @@ export class Demo1Component implements OnInit {
     while (n <= N) {
       this.ChartData.labels.push(n);
       var beginDate = Date.now();
-      this.bubbleSort(this.items.slice(0, n));
+      // this.bubbleSort(this.items.slice(0, n));
+      this.items.slice(0, n).sort((a, b) => this.compareTo(a.name, b.name));
       var endDate = Date.now();
       //spend time on sort
-      this.ChartData.datasets[0].data.push(Math.log10(endDate - beginDate));
-      n += 500;
+      this.ChartData.datasets[0].data.push(endDate - beginDate);
+      n += 1000;
     }
   }
 
