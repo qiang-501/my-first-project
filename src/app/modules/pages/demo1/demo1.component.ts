@@ -35,7 +35,7 @@ export class Demo1Component implements OnInit {
       this.bubbleSort(this.items.slice(0, n));
       var endDate = Date.now();
       //spend time on sort
-      this.ChartData.datasets[0].data.push(Math.log10(endDate - beginDate));
+      this.ChartData.datasets[0].data.push(endDate - beginDate);
       n += 500;
     }
   }

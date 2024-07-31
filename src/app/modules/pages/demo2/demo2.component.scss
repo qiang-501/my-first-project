@@ -1,0 +1,96 @@
+.location {
+  display: flex;
+  border: none;
+  height: 100%;
+}
+.mat-tab-title {
+  background-color: rgb(241, 241, 241);
+  min-width: 150px;
+  width: 20%;
+  height: 100%;
+
+  .ad-label {
+    display: flex;
+    line-height: 50px;
+    cursor: pointer;
+    width: 100%;
+    border-bottom: 2px solid rgb(206, 203, 203);
+    border-right: 2px solid rgb(206, 203, 203);
+    line-height: 50px;
+    align-content: center;
+    align-items: center;
+    display: inline-block;
+    text-align: center;
+    background-color: rgb(241, 241, 241);
+    border: 1px solid white;
+    color: #1a2321;
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+
+  .ad-label-active {
+    border: 2px solid #02a783;
+  }
+}
+.tab-group {
+  width: 80%;
+  background-color: white;
+}
+
+.filter-option {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  padding-bottom: 20px;
+  // width: calc(100% - 130px);
+  line-height: 28px;
+  padding: 1px;
+  height: 99%;
+
+  ul {
+    height: 90%;
+  }
+
+  li {
+    font-family: "Poppins";
+    list-style: none;
+    font-weight: normal;
+    font-size: 14px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-bottom: -20px;
+    margin-left: -16px;
+  }
+}
+.scroll-viewport {
+  height: 100%;
+  width: 95%;
+}
+
+.scroll-item {
+  //   height: 30px;
+  margin-top: 10px;
+  width: 100%;
+}
+.tab-header {
+  display: none !important;
+}
+.tab-body {
+  height: 100%;
+}
+.page {
+  display: flex;
+  background: antiquewhite;
+  div {
+    margin: auto;
+  }
+}
+:host::ng-deep .mat-mdc-tab-body-wrapper {
+  height: 100%;
+}
