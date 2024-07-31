@@ -1,10 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-
+import { AppShellComponent } from './app-shell/app-shell.component';
+import { RouterModule } from '@angular/router';
+import { NgChartsModule } from 'ng2-charts';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [RouterModule, NgChartsModule],
+      declarations: [AppComponent, AppShellComponent],
     }).compileComponents();
   });
 
@@ -24,6 +27,8 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, my-first-project');
+    expect(compiled.querySelector('h1')?.textContent).toContain(
+      'Hello, my-first-project'
+    );
   });
 });

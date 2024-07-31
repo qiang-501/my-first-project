@@ -1,0 +1,282 @@
+<div class="location">
+    <div class="mat-tab-title">
+        <div (click)="setTabGroup(tabgroup,0)" class="ad-label" [ngClass]="{'ad-label-active':tabGroupIndex==0}">
+            Tenant <label></label>
+        </div>
+        <div (click)="setTabGroup(tabgroup,1)" class="ad-label" [ngClass]="{'ad-label-active':tabGroupIndex==1}">
+            Customer <label></label>
+        </div>
+        <div (click)="setTabGroup(tabgroup,2)" class="ad-label" [ngClass]="{'ad-label-active':tabGroupIndex==2}">
+            Plant <label></label>
+        </div>
+        <div (click)="setTabGroup(tabgroup,3)" class="ad-label" [ngClass]="{'ad-label-active':tabGroupIndex==3}">
+            Unit <label></label>
+        </div>
+        <div (click)="setTabGroup(tabgroup,4)" class="ad-label" [ngClass]="{'ad-label-active':tabGroupIndex==4}">
+            Location <label></label>
+        </div>
+    </div>
+    <mat-tab-group #tabgroup class="tab-group">
+        <mat-tab label="tenant" labelClass="tab-header" bodyClass="tab-body">
+            <div class="filter-option">
+                <div class="advancedfilter-search">
+                    <div class="searchBar">
+                        <input type="text" placeholder="Search" matInput />
+                        <mat-icon>search</mat-icon>
+                    </div>
+                </div>
+                <ul>
+                    <div style="height: 100%;" cdkVirtualScrollingElement>
+                        <li>
+                            <mat-checkbox (change)="selectAll('tenant',$event)">
+                                <span title="All Tenant">All</span>
+                            </mat-checkbox>
+                        </li>
+                        <!-- <cdk-virtual-scroll-viewport itemSize="1" maxBufferPx="500" minBufferPx="300"
+                            class="scroll-viewport">
+                            <div *cdkVirtualFor="let item of items;templateCacheSize: 50" class="scroll-item">
+                                <li>
+                                    <mat-checkbox [(ngModel)]="item.checked" >
+                                        <span>
+                                            {{item.value }}
+                                        </span>
+                                    </mat-checkbox>
+                                </li>
+                            </div>
+                        </cdk-virtual-scroll-viewport> -->
+
+                        <div style="height: 100%;">
+                            <div *ngFor="let item of items;" class="scroll-item">
+                                <li>
+                                    <mat-checkbox [(ngModel)]="item.checked">
+                                        <span>
+                                            {{item.value }}
+                                        </span>
+                                    </mat-checkbox>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </mat-tab>
+        <mat-tab label="customer">
+            <div class="filter-option">
+                <div class="advancedfilter-search">
+                    <div class="searchBar">
+                        <input type="text" placeholder="Search" matInput />
+                        <mat-icon>search</mat-icon>
+                    </div>
+                </div>
+                <ul>
+                    <div style="height: 100%;" cdkVirtualScrollingElement>
+                        <li>
+                            <mat-checkbox [checked]="currentPage.customer_allComplete"
+                                [indeterminate]="currentPage.customer_someComplete"
+                                (change)="selectAll('customer',$event)">
+                                <span title="All Tenant">All</span>
+                            </mat-checkbox>
+                        </li>
+                        <!-- <cdk-virtual-scroll-viewport itemSize="1" maxBufferPx="500" minBufferPx="300"
+                            class="scroll-viewport">
+
+                            <div *cdkVirtualFor="let item of customer;templateCacheSize: 50" class="scroll-item">
+                                <li>
+                                    <mat-checkbox [(ngModel)]="item.checked" >
+                                        <span>
+                                            {{item.value }}
+                                        </span>
+                                    </mat-checkbox>
+                                </li>
+                            </div>
+                        </cdk-virtual-scroll-viewport> -->
+                        <div>
+                            <div *ngFor="let item of customer;" class="scroll-item">
+                                <li>
+                                    <mat-checkbox (change)="updateStatus()" [(ngModel)]="item.checked">
+                                        <span>
+                                            {{item.label }}
+                                        </span>
+                                    </mat-checkbox>
+                                </li>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </ul>
+                <div class="page">
+                    <div><span style="cursor: pointer;"
+                            (click)="currentPage.customer_page_size=currentPage.customer_page_size > 20 ? currentPage.customer_page_size - 20 : 20">last({{currentPage.customer_page_size-20}})</span>
+                    </div>
+                    <div><span style="cursor: pointer;"
+                            (click)="currentPage.customer_page_size =currentPage.customer_page_size+ 20">next({{customerCount-currentPage.customer_page_size}})</span>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="plant">
+            <div class="filter-option">
+                <div class="advancedfilter-search">
+                    <div class="searchBar">
+                        <input type="text" placeholder="Search" matInput />
+                        <mat-icon>search</mat-icon>
+                    </div>
+                </div>
+                <ul>
+                    <div style="height: 100%;" cdkVirtualScrollingElement>
+                        <li>
+                            <mat-checkbox [checked]="currentPage.plant_allComplete"
+                                [indeterminate]="currentPage.plant_someComplete" (change)="selectAll('plant',$event)">
+                                <span title="All Tenant">All</span>
+                            </mat-checkbox>
+                        </li>
+                        <!-- <cdk-virtual-scroll-viewport itemSize="5" class="scroll-viewport">
+
+                            <div *cdkVirtualFor="let item of plant" class="scroll-item">
+                                <li>
+                                    <mat-checkbox [(ngModel)]="item.checked" >
+                                        <span>
+                                            {{item.value }}
+                                        </span>
+                                    </mat-checkbox>
+                                </li>
+                            </div>
+
+
+                        </cdk-virtual-scroll-viewport> -->
+                        <div>
+                            <div *ngFor="let item of plant;" class="scroll-item">
+                                <li>
+                                    <mat-checkbox [(ngModel)]="item.checked">
+                                        <span>
+                                            {{item.label }}
+                                        </span>
+                                    </mat-checkbox>
+                                </li>
+                            </div>
+
+                        </div>
+                    </div>
+                </ul>
+                <div class="page">
+                    <div><span style="cursor: pointer;"
+                            (click)="currentPage.plant_page_size=currentPage.plant_page_size > 20 ? currentPage.plant_page_size - 20 : 20">last({{currentPage.plant_page_size-20}})</span>
+                    </div>
+                    <div><span style="cursor: pointer;"
+                            (click)="currentPage.plant_page_size =currentPage.plant_page_size+ 20">next({{plantCount-currentPage.plant_page_size}})</span>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="unit">
+            <div class="filter-option">
+                <div class="advancedfilter-search">
+                    <div class="searchBar">
+                        <input type="text" placeholder="Search" matInput />
+                        <mat-icon>search</mat-icon>
+                    </div>
+                </div>
+                <ul>
+                    <div style="height: 100%;" cdkVirtualScrollingElement>
+                        <li>
+                            <mat-checkbox [checked]="currentPage.unit_allComplete"
+                                [indeterminate]="currentPage.unit_someComplete" (change)="selectAll('unit',$event)">
+                                <span title="All Tenant">All</span>
+                            </mat-checkbox>
+                        </li>
+                        <!-- <cdk-virtual-scroll-viewport itemSize="5" class="scroll-viewport">
+
+                            <div *cdkVirtualFor="let item of unit" class="scroll-item">
+                                <li>
+                                    <mat-checkbox [(ngModel)]="item.checked" >
+                                        <span>
+                                            {{item.value }}
+                                        </span>
+                                    </mat-checkbox>
+                                </li>
+                            </div>
+
+
+                        </cdk-virtual-scroll-viewport> -->
+                        <div>
+                            <div *ngFor="let item of unit;" class="scroll-item">
+                                <li>
+                                    <mat-checkbox [(ngModel)]="item.checked">
+                                        <span>
+                                            {{item.label }}
+                                        </span>
+                                    </mat-checkbox>
+                                </li>
+                            </div>
+
+                        </div>
+                    </div>
+                </ul>
+                <div class="page">
+                    <div><span style="cursor: pointer;"
+                            (click)="currentPage.unit_page_size=currentPage.unit_page_size > 20 ? currentPage.unit_page_size - 20 : 20">last({{currentPage.unit_page_size-20}})</span>
+                    </div>
+                    <div><span style="cursor: pointer;"
+                            (click)="currentPage.unit_page_size =currentPage.unit_page_size+ 20">next({{unitCount-currentPage.unit_page_size}})</span>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="location">
+            <div class="filter-option">
+                <div class="advancedfilter-search">
+                    <div class="searchBar">
+                        <input type="text" placeholder="Search" matInput />
+                        <mat-icon>search</mat-icon>
+                    </div>
+                </div>
+                <ul>
+                    <div style="height: 100%;" cdkVirtualScrollingElement>
+                        <li>
+                            <mat-checkbox [checked]="currentPage.location_allComplete"
+                                [indeterminate]="currentPage.location_someComplete"
+                                (change)="selectAll('location',$event)">
+                                <span title="All Tenant">All</span>
+                            </mat-checkbox>
+                        </li>
+                        <!-- <cdk-virtual-scroll-viewport itemSize="5" class="scroll-viewport">
+
+                            <div *cdkVirtualFor="let item of location" class="scroll-item">
+                                <li>
+                                    <mat-checkbox [(ngModel)]="item.checked" >
+                                        <span>
+                                            {{item.value }}
+                                        </span>
+                                    </mat-checkbox>
+                                </li>
+                            </div>
+
+
+                        </cdk-virtual-scroll-viewport> -->
+                        <div>
+                            <div *ngFor="let item of location;" class="scroll-item">
+                                <li>
+                                    <mat-checkbox [(ngModel)]="item.checked">
+                                        <span>
+                                            {{item.label }}
+                                        </span>
+                                    </mat-checkbox>
+                                </li>
+                            </div>
+
+                        </div>
+                    </div>
+                </ul>
+                <div class="page">
+                    <div><span style="cursor: pointer;"
+                            (click)="currentPage.location_page_size=currentPage.location_page_size > 20 ? currentPage.location_page_size - 20 : 20">last({{currentPage.location_page_size-20}})</span>
+                    </div>
+                    <div><span style="cursor: pointer;"
+                            (click)="currentPage.location_page_size =currentPage.location_page_size+ 20">next({{locationCount-currentPage.location_page_size}})</span>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

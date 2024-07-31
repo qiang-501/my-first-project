@@ -8,12 +8,21 @@ import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import {
+  ScrollingModule,
+  CdkVirtualScrollViewport,
+  CdkVirtualForOf,
+} from '@angular/cdk/scrolling';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Demo1Component } from './demo1/demo1.component.js';
+import { Demo2Component } from './demo2/demo2.component.js';
 @NgModule({
-  declarations: [MainComponent, Demo1Component],
+  declarations: [MainComponent, Demo1Component, Demo2Component],
   exports: [NgChartsModule, MatCardModule, MainComponent, Demo1Component],
   imports: [
     HomeRoutingModule,
@@ -26,6 +35,12 @@ import { Demo1Component } from './demo1/demo1.component.js';
     CommonModule,
     FormsModule,
     MatSelectModule,
+    ScrollingModule,
+    CdkVirtualScrollViewport,
+    CdkVirtualForOf,
+    MatTabsModule,
+    MatIconModule,
+    MatCheckboxModule,
   ],
 })
 export class HomeModule {}

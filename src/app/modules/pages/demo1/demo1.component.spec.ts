@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Demo1Component } from './demo1.component';
+import { NgChartsModule } from 'ng2-charts';
 
 describe('Demo1Component', () => {
   let component: Demo1Component;
@@ -8,10 +9,10 @@ describe('Demo1Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Demo1Component]
-    })
-    .compileComponents();
-    
+      imports: [NgChartsModule],
+      declarations: [Demo1Component],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(Demo1Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
