@@ -1,0 +1,43 @@
+<div class="vk-transfer">
+    <mat-card style="height: 99.9%;margin-left: 5px;width: 99%;">
+        <mat-card-header>
+            <mat-card-title>Edit Table</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <div class="main">
+            <div class="left">
+                <div class="search-bar">
+                    <app-vk-search (keyWordsChangeEvent)="onKeyWordChange($event)"></app-vk-search>
+                </div>
+                <section *ngFor="let subField of allColumns" class="vk-checkbox-section">
+                    <div *ngIf="subField.display" style="display: flex; padding: 10px;">
+                        <mat-icon *ngIf="subField.children && subField.children.length > 0"
+                            style="padding-top: 7px; cursor: pointer;" (click)="expand(subField)"
+                            class="mat-icon-rtl-mirror">
+                            {{subField.expand ? 'expand_more' : 'chevron_right'}}
+                        </mat-icon>
+                        <mat-checkbox [checked]="checkNodeStatus(subField)"
+                            [indeterminate]="isSomeSelect(subField) && !checkNodeStatus(subField)"
+                            (change)="selectAll(subField)" [(ngModel)]="subField.checked" class="example-margin">
+                            {{subField.displayName}}
+                        </mat-checkbox>
+                    </div>
+                    <span class="example-list-section">
+                        <div style="margin-left: 50px;" [ngStyle]="{'display': subField.expand ? '' : 'none'}">
+                            <div *ngFor="let fields of subField.children">
+                                <div *ngIf="fields.display" style="display: flex; padding: 5px">
+                                    <mat-checkbox [checked]="checkNodeStatus(fields)"
+                                        [indeterminate]="isSomeSelect(fields)" (change)="selectAll(fields)"
+                                        [(ngModel)]="fields.checked">
+                                        {{fields.displayName}}
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                </section>
+            </div>
+        </div>
+
+    </mat-card>
+</div>

@@ -21,8 +21,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Demo1Component } from './demo1/demo1.component.js';
 import { Demo2Component } from './demo2/demo2.component.js';
+import { VkTreeComponent } from './shared/vk-tree/vk-tree.component.js';
+import { VkSearchComponent } from './shared/vk-search/vk-search.component.js';
 @NgModule({
-  declarations: [MainComponent, Demo1Component, Demo2Component],
+  declarations: [
+    MainComponent,
+    Demo1Component,
+    Demo2Component,
+    VkTreeComponent,
+    VkSearchComponent,
+  ],
   exports: [NgChartsModule, MatCardModule, MainComponent, Demo1Component],
   imports: [
     HomeRoutingModule,

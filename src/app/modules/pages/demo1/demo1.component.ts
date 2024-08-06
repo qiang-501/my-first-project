@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemNode } from '../shared/vk-tree/vk-tree.component';
+import { newTableColumns } from './all-columns.constants';
 @Component({
   selector: 'app-demo1',
   templateUrl: './demo1.component.html',
   styleUrl: './demo1.component.scss',
 })
 export class Demo1Component implements OnInit {
+  allColumns: Array<ItemNode>;
   public items: { name: string; value: number }[] = [];
   public ChartData: any = {
     datasets: [
       {
         data: [],
-        data: [],
       },
     ],
-    labels: [],
     labels: [],
   };
   public ChartOptions: any = {
@@ -25,22 +26,60 @@ export class Demo1Component implements OnInit {
   };
   // i need set items sort by name, the same first letter display as a>A , meams it should display as aad,afd,and, Abd,Acd,And,Avd ...
   ngOnInit(): void {
-    const N: number = 200000; // max iteration allowed
-    for (let i = 0; i < N; i++) {
-      this.items.push({ name: this.makeName(5), value: Math.random() });
-    }
-
-    let n = 0;
-    while (n <= N) {
-      this.ChartData.labels.push(n);
-      var beginDate = Date.now();
-      // this.bubbleSort(this.items.slice(0, n));
-      this.items.slice(0, n).sort((a, b) => this.compareTo(a.name, b.name));
-      var endDate = Date.now();
-      //spend time on sort
-      this.ChartData.datasets[0].data.push(endDate - beginDate);
-      n += 1000;
-    }
+    var data: Array<ItemNode> = [];
+    this.allColumns = [];
+    newTableColumns.map((_) => {
+      var temp = data.filter((f) => f.displayName == _.typeName);
+      if (temp.length > 0) {
+        if (!temp[0].children) temp[0].children = [];
+        temp[0].children.push({
+          name: _.typeName,
+          displayName: _.displayName,
+          checked: false,
+          display: true,
+          indeterminate: false,
+          expand: false,
+          field: _.field,
+          children: [],
+        });
+      } else {
+        data.push({
+          displayName: _.typeName,
+          name: _.type,
+          expand: false,
+          checked: false,
+          indeterminate: false,
+          display: true,
+          field: '', // parent node has no field value
+          children: [
+            {
+              display: true,
+              indeterminate: false,
+              expand: false,
+              displayName: _.displayName,
+              name: _.typeName,
+              checked: false,
+              field: _.field,
+              children: [],
+            },
+          ],
+        });
+      }
+    });
+    this.allColumns = data;
+    // const N: number = 200000; // max iteration allowed
+    // for (let i = 0; i < N; i++) {
+    //   this.items.push({ name: this.makeName(5), value: Math.random() });
+    // }
+    // let n = 0;
+    // while (n <= N) {
+    //   this.ChartData.labels.push(n);
+    //   var beginDate = Date.now();
+    //   this.items.slice(0, n).sort((a, b) => this.compareTo(a.name, b.name));
+    //   var endDate = Date.now();
+    //   this.ChartData.datasets[0].data.push(endDate - beginDate);
+    //   n += 1000;
+    // }
   }
 
   bubbleSort(arr: { name: string; value: number }[]): void {

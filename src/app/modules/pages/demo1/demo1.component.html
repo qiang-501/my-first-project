@@ -5,5 +5,6 @@
                 [value]="item.value">{{item.name}}</mat-option>
         </div>
     </mat-select> -->
-    <canvas baseChart [data]="ChartData" [options]="ChartOptions" [type]="'line'"> </canvas>
+    <!-- <canvas baseChart [data]="ChartData" [options]="ChartOptions" [type]="'line'"> </canvas> -->
+    <app-vk-tree [dataSource]="allColumns"></app-vk-tree>
 </div>

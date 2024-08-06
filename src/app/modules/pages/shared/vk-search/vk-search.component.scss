@@ -1,0 +1,201 @@
+.vlm-asset-search {
+  color: #fff;
+}
+
+.searchText {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  p {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 6px 15px;
+  }
+  .search-input {
+    width: 100%;
+    height: 44px;
+    border-radius: 50px;
+    color: #000;
+    border: none;
+    background-color: #fff;
+    outline: none;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    border: 1px solid #02a783;
+    margin-top: 0px;
+    padding: 0 14px;
+  }
+
+  button {
+    width: 129px;
+    height: 36px;
+    background: #02a783;
+    border-radius: 4px;
+    color: #fff;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+
+.searchBar {
+  display: flex;
+  align-content: center;
+  position: relative;
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  input:focus,
+  input:focus-visible {
+    outline: none;
+  }
+
+  button {
+    background: #02a783;
+    border-radius: 44px;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #02a783;
+    cursor: pointer;
+    margin-left: -44px;
+  }
+}
+
+input:focus {
+  outline: none;
+}
+
+.searchBar ::ng-deep .mat-autocomplete-panel,
+::ng-deep .mat-autocomplete-panel {
+  background: #fff;
+  color: #000000de;
+  border-radius: 4px !important;
+  margin: 2px auto !important;
+  box-shadow: 0px 3px 2px rgb(0 0 0 / 8%) !important;
+  max-width: 98% !important;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+  height: auto;
+}
+
+// ::ng-deep .mat-progress-bar-buffer {
+//   background: rgba(103, 58, 183, 0.12);
+// }
+
+::ng-deep .mat-progress-bar {
+  border-radius: 8px;
+}
+
+/* Progress Bar */
+.progress {
+  position: relative;
+  height: 4px;
+  display: block;
+  width: 100%;
+  background-color: #acece6;
+  border-radius: 2px;
+  background-clip: padding-box;
+  margin: 0.5rem 0 1rem 0;
+  overflow: hidden;
+}
+
+.progress .indeterminate {
+  background-color: #26a69a;
+}
+
+.progress .indeterminate:before {
+  content: "";
+  position: absolute;
+  background-color: inherit;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  will-change: left, right;
+  -webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395)
+    infinite;
+  animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+}
+
+.progress .indeterminate:after {
+  content: "";
+  position: absolute;
+  background-color: inherit;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  will-change: left, right;
+  -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1)
+    infinite;
+  animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1)
+    infinite;
+  -webkit-animation-delay: 1.15s;
+  animation-delay: 1.15s;
+}
+
+@-webkit-keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+// ScrollBar css for search option dropdown
+::ng-deep .mat-autocomplete-panel::-webkit-scrollbar {
+  width: 7px;
+}
+
+::ng-deep .mat-autocomplete-panel::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 7px #dffff899;
+  background-color: #dffff899;
+  border-radius: 20px;
+  box-shadow: inset 0 0 7px #eff2f1;
+  background-color: #eff2f1;
+}
+
+::ng-deep .mat-autocomplete-panel::-webkit-scrollbar-thumb {
+  background-color: #02a78399;
+  width: 7px;
+  border-radius: 20px;
+}

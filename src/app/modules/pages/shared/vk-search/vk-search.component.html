@@ -1,0 +1,12 @@
+<div class="vlm-asset-search">
+    <div class="searchBar">
+        <div appearance="outline" class="searchText">
+            <input type="text" class="search-input" (ngModelChange)="onKeyWordsChange($event)"
+                [(ngModel)]="searchKeyword" maxlength="30" [placeholder]="placeholder" matInput />
+            <button type="submit" (click)="search()">
+                <img src="assets/img/search.svg" />
+            </button>
+        </div>
+
+    </div>
+</div>
