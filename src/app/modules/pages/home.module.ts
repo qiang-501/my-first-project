@@ -31,7 +31,7 @@ import { VkSearchComponent } from './shared/vk-search/vk-search.component.js';
     VkTreeComponent,
     VkSearchComponent,
   ],
-  exports: [NgChartsModule, MatCardModule, MainComponent, Demo1Component],
+  exports: [NgChartsModule, MainComponent],
   imports: [
     HomeRoutingModule,
     NgChartsModule,

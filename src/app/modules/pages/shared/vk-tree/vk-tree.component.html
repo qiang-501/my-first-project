@@ -26,7 +26,7 @@
                         <div style="margin-left: 50px;" [ngStyle]="{'display': subField.expand ? '' : 'none'}">
                             <div *ngFor="let fields of subField.children">
                                 <div *ngIf="fields.display" style="display: flex; padding: 5px">
-                                    <mat-checkbox [checked]="checkNodeStatus(fields)"
+                                    <mat-checkbox [checked]="checkNodeStatus(fields)" class="example-margin"
                                         [indeterminate]="isSomeSelect(fields)" (change)="selectAll(fields)"
                                         [(ngModel)]="fields.checked">
                                         {{fields.displayName}}

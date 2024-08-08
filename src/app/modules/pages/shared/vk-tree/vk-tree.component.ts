@@ -20,6 +20,7 @@ export class VkTreeComponent implements OnInit {
   allColumns: Array<ItemNode>;
   ngOnInit(): void {
     this.allColumns = this.dataSource;
+    //console.log(this.allColumns);
   }
   onKeyWordChange(keyWord: any) {
     // make all parent nodes unexpanded if keyWord is empty
